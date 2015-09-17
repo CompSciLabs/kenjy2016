@@ -1,0 +1,28 @@
+{
+  "name": "kenjy2016",
+  "version": "1.0.0",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node_modules/gulp/bin/gulp.js"  
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CompSciLabs/kenjy2016.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CompSciLabs/kenjy2016/issues"
+  },
+  "homepage": "https://github.com/CompSciLabs/kenjy2016",
+  "private": true,
+  "devDependencies": {
+    "del": "^2.0.2",
+    "eslint": "^1.4.3",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.4.1"
+  }
+}
