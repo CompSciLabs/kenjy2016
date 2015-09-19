@@ -10,7 +10,7 @@ var gulp = require('gulp'),
 paths =
   { src:
     { images: 'src/img/**/*'
-    , styles: 'src/style/**/*.scss'
+    , styles: 'src/style/**/*.sass'
     , scripts: 'src/js/**/*'
     , vendor: 'src/vendor/**/*'
     },
@@ -18,12 +18,26 @@ paths =
     { images: 'build/img'
     , styles: 'build/style'
     , scripts: 'build/js'
-    , vendor: 'build/js/vendor'
+    , vendor: 'build/vendor'
     }
   }
 
-gulp.task('clean', function() {
-  return del([ 'build' ])
+gulp.task('clean', [ 'clean:images', 'clean:sass', 'clean:scripts', 'clean:vendor' ])
+
+gulp.task('clean:images', function () {
+  return del([ paths.build.images + '/**' ])
+})
+
+gulp.task('clean:sass', function () {
+  return del([ paths.build.styles + '/**' ])
+})
+
+gulp.task('clean:scripts', function () {
+  return del([ paths.build.scripts + '/**' ])
+})
+
+gulp.task('clean:vendor', function () {
+  return del([ paths.build.vendor + '/**' ])
 })
 
 gulp.task('sass', [ 'clean' ], function () {
@@ -56,10 +70,11 @@ gulp.task('images', [ 'clean' ], function() {
 })
 
 gulp.task('watch', function() {
-  gulp.watch(paths.src.scripts, [ 'scripts' ])
-  gulp.watch(paths.src.images, [ 'images' ])
-  gulp.watch(paths.src.styles, [ 'sass' ])
+  gulp.watch(paths.src.scripts, [ 'default' ])
+  gulp.watch(paths.src.vendor, [ 'default' ])
+  gulp.watch(paths.src.images, [ 'default' ])
+  gulp.watch(paths.src.styles, [ 'default' ])
 });
 
-gulp.task('default', [ 'watch', 'scripts', 'images', 'sass' ])
+gulp.task('default', [ 'watch', 'scripts', 'vendor', 'images', 'sass' ])
 
