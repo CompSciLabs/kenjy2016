@@ -11,6 +11,12 @@ $(document).ready(function () {
     }
   )
 
+  page.add(
+    { name: 'Test'
+    , element: '.test'
+    }
+  )
+
   page.init({ container: '.pages' })
 
   console.log(page)

@@ -15,6 +15,7 @@ window.page = (function () {
       var page = pages[pageIndex]
       $(pagesContainer).find('.page').hide()
       $(pagesContainer).find(page.element).show()
+      $(document).trigger('loadPage:' + page.element.replace('.', ''))
     }
   }
 
