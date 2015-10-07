@@ -6,18 +6,29 @@ $(document).ready(function () {
   )
 
   page.add(
-    { name: 'About'
-    , element: '.about'    
+    { name: 'Location'
+    , element: '.location'    
     }
   )
 
   page.add(
-    { name: 'Test'
-    , element: '.test'
+    { name: 'Registry'
+    , element: '.registry'
+    }
+  )
+
+  page.add(
+    { name: 'Schedule'
+    , element: '.schedule'
+    }
+  )
+
+  page.add(
+    { name: 'Gallery'
+    , element: '.gallery'
     }
   )
 
   page.init({ container: '.pages' })
 
-  console.log(page)
 })
