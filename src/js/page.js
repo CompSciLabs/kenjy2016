@@ -1,21 +1,31 @@
 window.page = (function () {
   var pages = [],
-      defaultPage = 0,
+      defaultIndex = 0,
+      currentIndex,
       pagesContainer = 'body'
 
   bind()
 
   function add (page, isDefault) {
     pages.push(page)
-    if (isDefault) defaultPage = (pages.length - 1)
+    if (isDefault) defaultIndex = (pages.length - 1)
   }
 
   function show (pageIndex) {
     if (typeof pageIndex !== 'undefined') {
       var page = pages[pageIndex]
-      $(pagesContainer).find('.page').hide()
-      $(pagesContainer).find(page.element).show()
-      $(document).trigger('loadPage:' + page.element.replace('.', ''))
+      if (!currentIndex && currentIndex !== 0) {
+        $(pagesContainer).find(page.element).show()
+        currentIndex = pageIndex
+        $(document).trigger('loadPage:' + page.element.replace('.', '')) 
+      } else if (currentIndex !== pageIndex) {
+        var currentPage = pages[currentIndex]
+        $(pagesContainer).find(page.element).fadeIn()
+        $(pagesContainer).find(currentPage.element).hide()
+        $(document).trigger('hidePage:' + currentPage.element.replace('.', ''))
+        currentIndex = pageIndex
+        $(document).trigger('loadPage:' + page.element.replace('.', ''))     
+      }
     }
   }
 
@@ -53,7 +63,7 @@ window.page = (function () {
        return show(pageIndex)
       }            
     }
-    show(defaultPage)
+    show(defaultIndex)
   }
 
   return {
