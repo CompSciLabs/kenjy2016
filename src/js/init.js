@@ -31,4 +31,11 @@ $(document).ready(function () {
 
   page.init({ container: '.pages' })
 
+  function CountDownHeader(){
+    var weddingDay = moment("2016-08-25");
+    var Countdown = weddingDay.diff(moment());
+    $('.countdown').empty().append( moment(Countdown).format("M,D,H,mm,ss"));
+  }
+
+  window.setInterval(CountDownHeader, 1000);
 })
