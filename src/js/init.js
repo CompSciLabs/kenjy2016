@@ -17,7 +17,16 @@ $(document).ready(function () {
     }
   )
 
+ function CountDownHeader(){
+  var weddingDay = moment("2016-08-25");
+  var Countdown = weddingDay.diff(moment());
+  $('.countdown').empty().append( moment(Countdown).format("M,D,H,mm,ss"));
+
+}
   page.init({ container: '.pages' })
 
   console.log(page)
+  window.setInterval(CountDownHeader, 1000);
+  
 })
+
